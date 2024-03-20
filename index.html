@@ -1,0 +1,45 @@
+class Snack:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+class SnackMachine:
+    def __init__(self):
+        self.snacks = []
+
+    def add_snack(self, snack):
+        self.snacks.append(snack)
+
+    def display_snacks(self):
+        print("Available Snacks:")
+        for index, snack in enumerate(self.snacks):
+            print(f"{index + 1}. {snack.name} - ${snack.price}")
+
+    def order_snack(self, choice):
+        if choice > 0 and choice <= len(self.snacks):
+            selected_snack = self.snacks[choice - 1]
+            print(f"You've ordered: {selected_snack.name}")
+            print(f"Please pay ${selected_snack.price}.")
+        else:
+            print("Invalid choice. Please select a valid snack.")
+
+# Create some snacks
+snack1 = Snack("Chips", 1.50)
+snack2 = Snack("Candy Bar", 1.00)
+snack3 = Snack("Soda", 2.00)
+
+# Create a snack machine
+machine = SnackMachine()
+
+# Add snacks to the machine
+machine.add_snack(snack1)
+machine.add_snack(snack2)
+machine.add_snack(snack3)
+
+# Display available snacks
+machine.display_snacks()
+
+# Order a snack
+choice = int(input("Enter the number of the snack you'd like to order: "))
+machine.order_snack(choice)
+
